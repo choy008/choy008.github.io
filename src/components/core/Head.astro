@@ -3,7 +3,7 @@ import Analytics from "./Analytics.astro";
 
 const { pageInfo } = Astro.props;
 
-let pageTitle = 'Jan Bláha';
+let pageTitle = 'Choy';
 if ('titlePrepend' in pageInfo) pageTitle = `${pageInfo['titlePrepend']} - ${pageTitle}`;
 if ('titleAppend' in pageInfo) pageTitle = `${pageTitle} - ${pageInfo['titleAppend']}`;
 
