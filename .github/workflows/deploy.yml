@@ -1,10 +1,14 @@
-on:
-  push:
-    branches:
-      - main  # default branch
+name: Build And Deploy
+
+on: workflow_dispatch
+  
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
-  pages:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the repository using git
