@@ -1,16 +1,20 @@
 {
+  "type": "module",
   "scripts": {
     "dev": "astro dev",
+    "start": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "astro": "astro"
   },
   "devDependencies": {
-    "@astrojs/sitemap": "^1.0.0",
-    "@fontsource/catamaran": "^4.5.10",
-    "@fontsource/solway": "^4.5.12",
-    "@rollup/plugin-yaml": "^4.0.1",
-    "astro": "^2.0.1",
-    "image-size": "^1.0.2",
+    "@astrojs/sitemap": "^3.0.5",
+    "@fontsource/catamaran": "^5.0.18",
+    "@fontsource/solway": "^5.0.8",
+    "@rollup/plugin-yaml": "^4.1.2",
+    "astro": "^4.2.1",
+    "image-size": "^1.1.1",
+    "marked": "^11.1.1",
     "normalize.css": "^8.0.1"
   }
 }

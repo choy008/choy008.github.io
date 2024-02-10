@@ -1,28 +1,24 @@
 ---
-import Analytics from "./Analytics.astro";
+import { constructPageTitle } from '../../scripts/astro-helpers';
+import siteData from '../../data/site.yml';
 
 const { pageInfo } = Astro.props;
 
-let pageTitle = 'Choy';
-if ('titlePrepend' in pageInfo) pageTitle = `${pageInfo['titlePrepend']} - ${pageTitle}`;
-if ('titleAppend' in pageInfo) pageTitle = `${pageTitle} - ${pageInfo['titleAppend']}`;
-
-let pageImageSource = pageInfo.image ?? 'assets/social.jpg';
-const pageImage = import.meta.env.SITE + pageImageSource;
+const pageTitle = constructPageTitle(pageInfo);
+const pageDescription = pageInfo.description ?? siteData.description;
+const pageImage = import.meta.env.SITE + (pageInfo.image ?? siteData.image);
 ---
 
 <meta charset="utf-8">
 
 <title>{pageTitle}</title>
-<meta name="description" content={pageInfo.description}>
+<meta name="description" content={pageDescription}>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <meta property="og:title" content={pageTitle}>
 <meta property="og:url" content={Astro.url}>
-<meta property="og:description" content={pageInfo.description}>
+<meta property="og:description" content={pageDescription}>
 <meta property="og:type" content="website"/>
 <meta property="og:image" content={pageImage}>
 
 <script is:inline src="/scripts/global.js"/>
-
-<Analytics/>

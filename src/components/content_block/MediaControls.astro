@@ -1,0 +1,53 @@
+---
+import '../../styles/tiles.css';
+
+const { name, path, desc } = Astro.props;
+const descriptionClass = desc ? ' has-description' : '';
+---
+
+<div class={"media-controls" + descriptionClass}>
+	<div class="tile-row">
+		<a download={name} href={path} target="_blank" title="Download">
+			<div class="tile">
+				<div class="tile-icon">
+					<img src="/assets/svg/download.svg" alt="" onload="fadeIn(this);">
+				</div>
+			</div>
+		</a>
+		<a href={path} target="_blank" title="Fullscreen">
+			<div class="tile">
+				<div class="tile-icon">
+					<img src="/assets/svg/fullscreen.svg" alt="" onload="fadeIn(this);">
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+
+<style>
+	.media-controls {
+		position: absolute;
+		width: 100%;
+		bottom: 10px;
+
+		opacity: 0;
+		transition: opacity 0.5s ease;
+	}
+
+	.media-controls.has-description {
+		bottom: 15px;
+	}
+
+	.media-controls .tile {
+		padding: 13px 14px;
+	}
+
+	.media-controls .tile-icon {
+		height: 21px;
+	}
+
+	.media-controls .tile-icon img {
+		height: 21px;
+		width: 21px;
+	}
+</style>

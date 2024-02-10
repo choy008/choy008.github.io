@@ -1,12 +1,10 @@
-# Project index
-# Defines what tiles are displayed on the "projects" page
-# and in what order. Items listed here need to have a yml
-# data file with the same name in the data/projects/ folder.
-
+- crepuscular
+- flyboys
 - cactus-series
-- website
-- milestone
+- astro
+- milestones
 - dioramas
+- parkour
 - octarr
 - characters
 - sketchbook

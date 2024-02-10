@@ -1,0 +1,54 @@
+---
+import Layout from '../../layouts/Default.astro';
+import ProjectTile from '../../components/projects/ProjectTile.astro';
+import InactiveProjectTile from '../../components/projects/InactiveProjectTile.astro';
+import { getProjects } from '../../scripts/astro-helpers';
+
+// Project grid
+const projects = await getProjects();
+const columns = 3;
+const gaps = (columns - (projects.length % columns)) % columns;
+
+// Layout variables
+const pageInfo = {
+	'titlePrepend': 'Projects',
+	'tab': 'projects',
+};
+---
+
+<Layout pageInfo={pageInfo}>
+	<div class="project-grid">
+		<!-- Tiles -->
+		{projects.map((project) =>
+			<ProjectTile project={project}/>
+		)}
+		<!-- Inactive tiles -->
+		{[...Array(gaps)].map(() =>
+			<InactiveProjectTile/>
+		)}
+	</div>
+</Layout>
+
+<style>
+	.project-grid {
+		margin: 50px auto 20px;
+		max-width: 1160px;
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+
+	@media (max-width: 776px) {
+		.project-grid {
+			margin: 0;
+			margin-top: 10px;
+			display: block;
+		}
+	}
+
+	@media (min-width: 2101px) {
+		.project-grid {
+			margin: 60px auto 20px;
+		}
+	}
+</style>

@@ -1,25 +1,19 @@
 ---
+import links from '../../data/links.yml';
 import '../../styles/tiles.css';
 ---
 
 <div class="footer">
-	<div class="link-row">
-		<div class="tile-wrapper">
-			<a href="mailto:choy@haxck.com" target="_blank" title="Email">
+	<div class="tile-row">
+		{links.map((link) =>
+			<a href={link.link} target="_blank" title={link.name}>
 				<div class="tile"> 
-					<div class="tile-icon"><img src="/assets/svg/envelope.svg" onload="fadeIn(this);"></div>
+					<div class="tile-icon">
+						<img src={link.icon} alt="" onload="fadeIn(this);">
+					</div>
 				</div>
 			</a>
-		</div>
-
-		<div class="tile-wrapper">
-			<a href="https://github.com/choy008" target="_blank" title="GitHub">
-				<div class="tile">
-					<div class="tile-icon"><img src="/assets/svg/github.svg" onload="fadeIn(this);"></div>
-				</div>
-			</a>
-		</div>
-
+		)}
 	</div>
 </div>
 
@@ -30,7 +24,7 @@ import '../../styles/tiles.css';
 		pointer-events: none;
 	}
 
-	.footer .tile-wrapper {
+	.footer a {
 		pointer-events: all;
 	}
 

@@ -1,0 +1,29 @@
+---
+import { renderMarkdown } from '../scripts/astro-helpers';
+import ContentBlock from '../components/content_block/ContentBlock.astro';
+import '../styles/textarea.css';
+
+const { contentBlock } = Astro.props;
+---
+
+<ContentBlock>
+	<div class="text-block">
+		<div
+			class="textarea"
+			set:html={renderMarkdown(contentBlock.properties.data)}
+		/>
+	</div>
+</ContentBlock>
+
+<style>
+	.text-block {
+		display: flex;
+		justify-content: center;
+	}
+
+	@media (max-width: 776px) {
+		.text-block {
+			margin-bottom: 22px;
+		}
+	}
+</style>

@@ -1,19 +1,15 @@
 ---
-import MainLayout from '../layouts/MainLayout.astro';
+import Layout from '../layouts/Default.astro';
 import BigButton from '../components/core/BigButton.astro';
 
-// Load data
-import modelSettings from '../data/model-settings.yml';
-import typewriterStrings from '../data/typewriter-strings.yml';
-
 // Layout variables
-const pageInfo = {};
-// pageInfo['titleAppend'] = ''
-pageInfo['description'] = 'this is my first page'
-pageInfo['tab'] = 'home';
+const pageInfo = {
+	'titleAppend': '3D art and programming',
+	'tab': 'home',
+};
 ---
 
-<MainLayout pageInfo={pageInfo}>
+<Layout pageInfo={pageInfo}>
 	<div class="homepage">
 		<h1 class="homepage-title">I'm Du Zhixing</h1>
 		<div class="model-viewer-container">
@@ -21,16 +17,18 @@ pageInfo['tab'] = 'home';
 				environment-image="/assets/env.hdr"
 				exposure="1.1"
 				autoplay
+				disable-pan
+				disable-zoom
+				min-camera-orbit="auto 80deg auto"
+				max-camera-orbit="auto 80deg auto"
+				shadow-intensity="1"
+				shadow-softness="0"
+				camera-controls
+				touch-action="pan-y"
+				interaction-prompt="none"
 				auto-rotate
 				auto-rotate-delay="0"
 				rotation-per-second="-5deg"
-				min-camera-orbit="auto 80deg auto"
-				max-camera-orbit="auto 80deg auto"
-				camera-controls
-				interaction-prompt="none"
-				disable-zoom
-				shadow-intensity="1"
-				shadow-softness="0"
 			/>
 		</div>
 		<div class="homepage-info-panel">
@@ -47,18 +45,12 @@ pageInfo['tab'] = 'home';
 			</div>
 		</div>
 	</div>
-</MainLayout>
+</Layout>
 
-<script define:vars={{modelSettings, typewriterStrings}}>
-	// Expose astro data to client scripts
-	window.ASTRO_modelSettings = modelSettings;
-	window.ASTRO_typewriterStrings = typewriterStrings;
-</script>
 <script type="module" src="/scripts/model-viewer.min.js"></script>
 <script>
+	import '../scripts/homepage-model-viewer.js';
 	import '../scripts/typewriter.js';
-	import '../scripts/model-viewer.js';
-	import '../scripts/model-viewer-debug.js';
 </script>
 
 <style>
@@ -73,7 +65,7 @@ pageInfo['tab'] = 'home';
 	}
 
 	.homepage-title {
-		z-index: 10;
+		z-index: -10;
 		font-size: 60px;
 		text-align: center;
 		pointer-events: none;
@@ -130,7 +122,6 @@ pageInfo['tab'] = 'home';
 			display: block;
 			min-width: 0;
 			max-width: none;
-			min-height: 320px;
 			height: calc(100vh - 227px);
 		}
 
@@ -140,16 +131,23 @@ pageInfo['tab'] = 'home';
 		}
 
 		.model-viewer-container {
-			display: none;
+			left: 0;
+			width: 100%;
+			height: calc(100%);
 		}
 
 		.homepage-info-panel {
 			margin-left: 0px;
 			align-items: center;
+			justify-content: end;
 		}
 		
+		.projects-button-wrapper {
+			margin-bottom: 70px;
+		}
+
 		.typewriter-container {
-			width: 227px;
+			display: none;
 		}
 	}
 	
