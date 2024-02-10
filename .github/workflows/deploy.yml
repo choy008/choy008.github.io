@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - astro  # default branch
+      - main  # default branch
 
 jobs:
   pages:
