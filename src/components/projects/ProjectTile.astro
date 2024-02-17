@@ -14,6 +14,9 @@ const { project } = Astro.props
 	<div class="project-title">
 		{project.data.title}
 	</div>
+	<div class="project-desc">
+		{project.data.description}
+	</div>
 	<div class="project-tags">
 		{project.data.tags.map((tag) =>
 			<span class="tag">{tag}</span>
@@ -72,7 +75,15 @@ const { project } = Astro.props
 		white-space: nowrap;
 		overflow: hidden;
 	}
-
+.project-desc{
+	position: relative;
+		height: 23px;
+		margin: 12px 12px 0px;
+		color: #6e6e6e;
+		font-size: 16px;
+		white-space: nowrap;
+		overflow: hidden;
+}
 	.project-tags {
 		position: relative;
 		height: 24px;

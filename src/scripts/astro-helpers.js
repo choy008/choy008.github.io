@@ -34,6 +34,7 @@ export function constructPageTitle(pageInfo)
 	if ('titlePrepend' in pageInfo) title = `${pageInfo.titlePrepend} - ${title}`;
 	if ('titleAppend' in pageInfo) title = `${title} - ${pageInfo.titleAppend}`;
 
+
 	return title;
 }
 

@@ -4,3 +4,6 @@
 - name: Projects
   id: projects
   link: /projects/
+- name: About
+  id: about
+  link: /about/
