@@ -1,6 +1,10 @@
 name: Build And Deploy
 
-on: workflow_dispatch
+on: 
+  push:
+    branches:
+      - main  # default branch
+
   
 permissions:
   contents: read
